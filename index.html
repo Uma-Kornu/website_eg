@@ -1,37 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Molecular Dynamic Simulations</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Molecular Dynamic Simulations</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      box-sizing: border-box;
+      }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+    }
+    .h1{
+      width: 100%;
+      text-align: center; 
+      padding: 20px 0;
+    }
+    .sidebar {
+      width: 150px;
+      height: 100%;
+      background-color: #2c3e50;
+      padding: 20px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .sidebar h2{
+      font-size: 20px;
+    }
+    .sidebar button {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #34495e;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .sidebar button:hover {
+      background-color: #1abc9c;
+    }
+    .main-content {
+      margin-left: 400px; /* leave space for fixed sidebar */
+      padding: 20px;
+      width: 80%;
+    }
+
+    .main-content img {
+      max-width: 80%;
+      display: none;
+      margin-top: 20px;
+      
+    }
+
+
+  </style>
+  <script>
+    function showImage(imageId) {
+      const imageIds = ['fccImage', 'bccImage', 'alloyImage'];
+
+      imageIds.forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+
+      document.getElementById(imageId).style.display = 'block';
+    }
+  </script>
 </head>
 <body>
-    <h1>Molecular Dynamic Simulations</h1>
-     <div class="table" style="margin-top: auto;">
-        <button class="button" onclick="document.getElementById('fccImage').style.display='block'">
-            FCC
-        </button>
-        <img id="fccImage" 
-             src="Imgs/FCC/melting_analysis.png" 
-             alt="FCC Image" 
-             style="display: none; max-width: 500px;">
-        
-        <button class="button" onclick="document.getElementById('bccImage').style.display='block'">
-            BCC
-        </button>
-        <img id="bccImage" 
-             src="Imgs/BCC/melting_analysis.png" 
-             alt="BCC Image" 
-             style="display: none; max-width: 500px;">
-        <button class="button" onclick="document.getElementById('alloyImage').style.display='block'">
-            Alloy
-        </button>
-        <img id="alloyImage" 
-             src="Imgs/Alloys/melting_analysis.png" 
-             alt="Alloy Image" 
-             style="display: none; max-width: 500px;">
-    </div>
-   
+  <h1>Molecular Dynamic Simulations</h1>
+  <nav class="sidebar">
+    <h2>Crystal System</h2>
+    <button onclick="showImage('fccImage')">FCC</button>
+    <button onclick="showImage('bccImage')">BCC</button>
+    <button onclick="showImage('alloyImage')">Alloy</button>
+  </nav>
 
+  <div class="main-content">
+    <img id="fccImage" src="Imgs/FCC/melting_analysis.png" alt="FCC Image">
+    <img id="bccImage" src="Imgs/BCC/melting_analysis.png" alt="BCC Image">
+    <img id="alloyImage" src="Imgs/Alloys/melting_analysis.png" alt="Alloy Image">
+  </div>
+  
+  
 </body>
 </html>
+
+
